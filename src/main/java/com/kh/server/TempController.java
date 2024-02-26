@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class TempController {
     @GetMapping("/")
     public String index(HttpServletRequest httpServletRequest) {
-        return "현재 서버 포트 ::: "+httpServletRequest.getServerPort();
+        return "현재 서버 포트 ::: "+httpServletRequest.getLocalPort();
     }
 }
