@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="true" scan="true">
 
-    <!-- 로그 파일이 저장될 경로 -->
+    <!-- 로그 파일이 저장될 경로. -->
     <property name="LOG_PATH" value="/project/log"/>
 
     <!-- 로그 파일 이름 -->
