@@ -22,10 +22,25 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	//security
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	//implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
+	//implementation
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+	//test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//implementation 'javax.validation:validation-api:2.0.1.Final'
+	//implementation 'javax.xml.bind:jaxb-api-osgi:2.2.7'
+	//implementation 'jakarta.validation:jakarta.validation-api:3.0.1'
 }
 
 tasks.named('test') {
