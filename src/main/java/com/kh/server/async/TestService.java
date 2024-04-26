@@ -1,7 +1,9 @@
 package com.kh.server.async;
 
+import java.util.concurrent.CompletableFuture;
+
 public interface TestService {
 
-    AsyncUserA asyncTestA() throws InterruptedException;
-    AsyncUserB asyncTestB() throws InterruptedException;
+    CompletableFuture<AsyncUserA> asyncTestA() throws InterruptedException;
+    CompletableFuture<AsyncUserB> asyncTestB() throws InterruptedException;
 }
