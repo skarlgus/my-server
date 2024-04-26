@@ -17,11 +17,10 @@ public class AsyncServiceImpl implements AsyncService{
     }
 
     @Override
-    public void async() throws InterruptedException, ExecutionException {
+    public void asyncTypeA() throws InterruptedException, ExecutionException {
 
         log.info("======비동기 호출 시작");
 
-        //비동기 호출
         CompletableFuture<AsyncUserA> futureA = testService.asyncTestA();
         CompletableFuture<AsyncUserB> futureB = testService.asyncTestB();
 
@@ -30,8 +29,18 @@ public class AsyncServiceImpl implements AsyncService{
         combinedFuture.get();
 
         //비동기 결과 후처리
+        AsyncUserA asyncUserA = futureA.get();
+        AsyncUserB asyncUserB = futureB.get();
+
+        log.info("이름 : {}",asyncUserA.getName());
+        log.info("닉네임 : {}",asyncUserB.getNickName());
 
         log.info("======비동기 호출 종료");
+    }
+
+    @Override
+    public void asyncTypeB() throws InterruptedException, ExecutionException {
+
     }
 
 }

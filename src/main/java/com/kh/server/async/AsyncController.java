@@ -14,8 +14,13 @@ public class AsyncController {
 
     private final AsyncService asyncService;
 
-    @PostMapping("/async")
-    public void async() throws InterruptedException, ExecutionException {
-        asyncService.async();
+    @PostMapping("/async-type-a")
+    public void asyncTypeA() throws InterruptedException, ExecutionException {
+        asyncService.asyncTypeA();
+    }
+
+    @PostMapping("/async-type-b")
+    public void asyncTypeB() throws InterruptedException, ExecutionException {
+        asyncService.asyncTypeB();
     }
 }

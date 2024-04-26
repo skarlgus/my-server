@@ -17,7 +17,7 @@ public class TestServiceImpl implements TestService{
             Thread.sleep(1000);
         }
 
-        return CompletableFuture.completedFuture(new AsyncUserA());
+        return CompletableFuture.completedFuture(new AsyncUserA("아무개","30"));
     }
 
     @Override
@@ -28,7 +28,7 @@ public class TestServiceImpl implements TestService{
             Thread.sleep(1000);
         }
 
-        return CompletableFuture.completedFuture(new AsyncUserB());
+        return CompletableFuture.completedFuture(new AsyncUserB("골목대장","19900101"));
     }
 
 }

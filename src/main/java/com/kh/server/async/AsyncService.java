@@ -4,5 +4,6 @@ import java.util.concurrent.ExecutionException;
 
 public interface AsyncService {
 
-    void async() throws InterruptedException, ExecutionException;
+    void asyncTypeA() throws InterruptedException, ExecutionException;
+    void asyncTypeB() throws InterruptedException, ExecutionException;
 }
