@@ -9,7 +9,7 @@ public class AsyncServiceImpl implements AsyncService{
 
     @Override
     public void async(){
-        log.info("@@@");
+
     }
 
 }
