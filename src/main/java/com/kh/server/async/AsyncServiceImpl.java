@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 @Slf4j
 @Service
@@ -16,7 +17,7 @@ public class AsyncServiceImpl implements AsyncService{
     }
 
     @Override
-    public void async() throws InterruptedException {
+    public void async() throws InterruptedException, ExecutionException {
 
         log.info("======비동기 호출 시작");
 
@@ -25,6 +26,8 @@ public class AsyncServiceImpl implements AsyncService{
         CompletableFuture<AsyncUserB> futureB = testService.asyncTestB();
 
         //비동기 대기
+        CompletableFuture<Void> combinedFuture = CompletableFuture.allOf(futureA, futureB);
+        combinedFuture.get();
 
         //비동기 결과 후처리
 
