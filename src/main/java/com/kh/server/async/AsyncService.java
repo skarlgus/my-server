@@ -6,4 +6,5 @@ public interface AsyncService {
 
     void asyncTypeA() throws InterruptedException, ExecutionException;
     void asyncTypeB() throws InterruptedException, ExecutionException;
+    void syncTypeC();
 }

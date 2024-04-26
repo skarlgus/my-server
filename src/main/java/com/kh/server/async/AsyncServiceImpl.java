@@ -1,7 +1,11 @@
 package com.kh.server.async;
 
+import com.google.common.base.Stopwatch;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.ssl.SslProperties;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -12,6 +16,8 @@ public class AsyncServiceImpl implements AsyncService{
 
     private final TestService testService;
 
+
+
     public AsyncServiceImpl(TestService testService) {
         this.testService = testService;
     }
@@ -21,8 +27,8 @@ public class AsyncServiceImpl implements AsyncService{
 
         log.info("======비동기 호출 시작");
 
-        CompletableFuture<AsyncUserA> futureA = testService.asyncTestA();
-        CompletableFuture<AsyncUserB> futureB = testService.asyncTestB();
+        CompletableFuture<AsyncUserA> futureA = testService.asyncMethodTestA();
+        CompletableFuture<AsyncUserB> futureB = testService.asyncMethodTestB();
 
         //비동기 대기
         CompletableFuture<Void> combinedFuture = CompletableFuture.allOf(futureA, futureB);
@@ -40,6 +46,43 @@ public class AsyncServiceImpl implements AsyncService{
 
     @Override
     public void asyncTypeB() throws InterruptedException, ExecutionException {
+
+        Stopwatch stopwatch = Stopwatch.createStarted();
+
+        CompletableFuture<TestJson> testJsonA = testService.asyncNonBlocking();
+        CompletableFuture<TestJson> testJsonB = testService.asyncNonBlocking();
+
+        CompletableFuture<Void> combinedFuture = CompletableFuture.allOf(testJsonA, testJsonB);
+        combinedFuture.get();
+
+        combinedFuture.thenRun(() -> {
+            try {
+                TestJson response1 = testJsonA.get();
+                TestJson response2 = testJsonB.get();
+
+                //log.info("testJsonA 호출 : {}",response1);
+                //log.info("testJsonB 호출 : {}",response2);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        stopwatch.stop();
+        log.info("time ::: {}",stopwatch.toString());
+
+    }
+
+    @Override
+    public void syncTypeC(){
+
+        Stopwatch stopwatch = Stopwatch.createStarted();
+
+        TestJson testJsonA = testService.syncTest();
+        TestJson testJsonB = testService.syncTest();
+
+        stopwatch.stop();
+        log.info("time ::: {}",stopwatch.toString());
 
     }
 

@@ -29,13 +29,13 @@ public class LoggingFilter extends OncePerRequestFilter {
         ContentCachingResponseWrapper responseWrapper = new ContentCachingResponseWrapper(response);
         filterChain.doFilter(requestWrapper, responseWrapper);
 
-        log.info("==========[REQUEST - RESPONSE INFO]==========");
-        log.info("URI ::: {}", request.getRequestURI());
-        log.info("METHOD ::: {}",request.getMethod());
-        log.info("Headers ::: {}", getHeaders(request));
-        log.info("QueryString ::: {}", getQueryParameter(request));
-        log.info("Request Body ::: {}", contentBody(requestWrapper.getContentAsByteArray()));
-        log.info("Response Body ::: {}", contentBody(responseWrapper.getContentAsByteArray()));
+        //log.info("==========[REQUEST - RESPONSE INFO]==========");
+        //log.info("URI ::: {}", request.getRequestURI());
+        //log.info("METHOD ::: {}",request.getMethod());
+        //log.info("Headers ::: {}", getHeaders(request));
+        //log.info("QueryString ::: {}", getQueryParameter(request));
+        //log.info("Request Body ::: {}", contentBody(requestWrapper.getContentAsByteArray()));
+        //log.info("Response Body ::: {}", contentBody(responseWrapper.getContentAsByteArray()));
 
         responseWrapper.copyBodyToResponse();
     }

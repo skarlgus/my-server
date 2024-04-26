@@ -23,4 +23,9 @@ public class AsyncController {
     public void asyncTypeB() throws InterruptedException, ExecutionException {
         asyncService.asyncTypeB();
     }
+
+    @PostMapping("/sync-type-c")
+    public void syncTypeC() {
+        asyncService.syncTypeC();
+    }
 }

@@ -7,7 +7,10 @@ import java.util.concurrent.CompletableFuture;
 public interface TestService {
 
     @Async
-    CompletableFuture<AsyncUserA> asyncTestA() throws InterruptedException;
+    CompletableFuture<AsyncUserA> asyncMethodTestA() throws InterruptedException;
     @Async
-    CompletableFuture<AsyncUserB> asyncTestB() throws InterruptedException;
+    CompletableFuture<AsyncUserB> asyncMethodTestB() throws InterruptedException;
+
+    CompletableFuture<TestJson> asyncNonBlocking();
+    TestJson syncTest();
 }
