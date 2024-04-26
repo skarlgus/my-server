@@ -1,7 +1,6 @@
 package com.kh.server.async;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.CompletableFuture;
@@ -11,7 +10,6 @@ import java.util.concurrent.CompletableFuture;
 public class TestServiceImpl implements TestService{
 
     @Override
-    @Async
     public CompletableFuture<AsyncUserA> asyncTestA() throws InterruptedException {
 
         for(int i=0; i<5; i++){
@@ -23,7 +21,6 @@ public class TestServiceImpl implements TestService{
     }
 
     @Override
-    @Async
     public CompletableFuture<AsyncUserB> asyncTestB() throws InterruptedException {
 
         for(int i=0; i<5; i++){
